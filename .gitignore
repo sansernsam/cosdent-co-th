@@ -3,3 +3,4 @@ v*-*.png
 live-*.png
 .DS_Store
 .gstack/
+_board/
