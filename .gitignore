@@ -2,3 +2,4 @@ shot-*.png
 v*-*.png
 live-*.png
 .DS_Store
+.gstack/
