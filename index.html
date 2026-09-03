@@ -19,151 +19,136 @@
 <link rel="preload" as="image" href="/assets/hero-0faa74f8.webp" fetchpriority="high">
 <style>
   :root{
-    --font:"forma-djr-thai-text",-apple-system,BlinkMacSystemFont,"Helvetica Neue",sans-serif;
-    --bg:#1b1c1f;
-    --card:#2a2b2f;
-    --card-2:#333333;
-    --line:rgba(255,255,255,.10);
+    --font:"forma-djr-thai-text",-apple-system,BlinkMacSystemFont,"SF Pro Display","Helvetica Neue",sans-serif;
+    --bg:#1b1c1f;          /* ชาร์โคลตามต้นแบบ Dark/review */
+    --bg-2:#000000;        /* Apple dark section */
+    --card-d:#2c2c2e;      /* Apple secondary dark */
+    --light:#f5f5f7;       /* Apple light section */
+    --card-l:#ffffff;
+    --ink:#1d1d1f;
+    --ink-2:#6e6e73;
     --white:#ffffff;
     --w70:rgba(255,255,255,.72);
-    --w50:rgba(255,255,255,.50);
+    --w50:rgba(255,255,255,.52);
     --teal:#2db7b9;
+    --teal-d:#1f9698;
     --gutter:clamp(20px,5vw,64px);
     --ease:cubic-bezier(.22,.8,.3,1);
-    --r:12px;
+    --r:28px;
   }
   *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%;background:var(--bg)}
-  body{
-    margin:0;background:var(--bg);color:var(--white);
-    font-family:var(--font);font-weight:400;
-    font-size:16px;line-height:1.6;
-    -webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;
-  }
+  html{-webkit-text-size-adjust:100%;background:var(--bg);scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--white);font-family:var(--font);font-weight:400;font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale}
   img{display:block;max-width:100%}
   a{color:inherit;text-decoration:none}
   .wrap{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+  .center{text-align:center}
 
-  /* ---------- reveal (ปลอดภัยเมื่อไม่มี JS) ---------- */
-  .js .rv{opacity:0;transform:translateY(16px);transition:opacity .8s var(--ease),transform .8s var(--ease)}
+  /* reveal — ปลอดภัยเมื่อไม่มี JS */
+  .js .rv{opacity:0;transform:translateY(20px);transition:opacity .9s var(--ease),transform .9s var(--ease)}
   .js .rv.in{opacity:1;transform:none}
-  @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}}
+  @media (prefers-reduced-motion:reduce){.js .rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
 
-  /* ---------- buttons ---------- */
-  .btn{
-    display:inline-flex;align-items:center;gap:10px;
-    padding:13px 22px;border-radius:10px;
-    font-weight:700;font-size:15px;line-height:1;
-    transition:transform .2s var(--ease),background .2s,color .2s,border-color .2s;
-    border:1px solid transparent;
-  }
-  .btn:hover{transform:translateY(-2px)}
-  .btn-white{background:var(--white);color:#111}
-  .btn-white:hover{background:#f2f2f2}
-  .btn-ghost{border-color:rgba(255,255,255,.28);color:var(--white)}
-  .btn-ghost:hover{border-color:var(--white)}
-  .btn svg{flex:none}
+  /* type — Apple scale */
+  .eyebrow{font-size:19px;font-weight:700;color:var(--teal);margin:0 0 10px;letter-spacing:-.01em}
+  h1{margin:0 0 14px;font-size:clamp(44px,7vw,84px);font-weight:700;line-height:1.05;letter-spacing:-.025em}
+  .lead{margin:0 auto;font-size:clamp(19px,2.2vw,27px);font-weight:500;line-height:1.3;letter-spacing:-.01em;color:var(--w70);max-width:30ch}
+  .lead b{color:var(--white);font-weight:700}
+  h2{margin:0 0 10px;font-size:clamp(32px,4.6vw,56px);font-weight:700;line-height:1.08;letter-spacing:-.022em}
+  .sub{margin:0 auto 40px;font-size:clamp(17px,1.8vw,21px);color:var(--w70);max-width:52ch;line-height:1.45}
+  .light .sub{color:var(--ink-2)}
+  .light h2{color:var(--ink)}
 
-  /* ---------- nav ---------- */
-  .nav{
-    position:sticky;top:0;z-index:50;height:64px;
-    background:rgba(27,28,31,.85);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
-    border-bottom:1px solid var(--line);display:flex;align-items:center;
-  }
+  /* links & buttons — Apple */
+  .more{display:inline-flex;align-items:center;gap:4px;color:var(--teal);font-weight:700;font-size:19px}
+  .more:hover{text-decoration:underline}
+  .more::after{content:"›";font-size:1.15em;line-height:1;margin-left:2px;transition:transform .3s var(--ease)}
+  .more:hover::after{transform:translateX(3px)}
+  .pill{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:17px;line-height:1;transition:transform .2s var(--ease),background .2s}
+  .pill:hover{transform:translateY(-1px)}
+  .pill-teal{background:var(--teal);color:#fff}.pill-teal:hover{background:var(--teal-d)}
+  .pill-white{background:#fff;color:var(--ink)}.pill-white:hover{background:#eaeaea}
+  .pill-dark{background:var(--ink);color:#fff}.pill-dark:hover{background:#000}
+  .cta-row{display:flex;gap:26px;justify-content:center;align-items:center;flex-wrap:wrap}
+
+  /* nav — frosted glass */
+  .nav{position:sticky;top:0;z-index:50;height:52px;background:rgba(27,28,31,.72);backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);border-bottom:1px solid rgba(255,255,255,.08);display:flex;align-items:center}
   .nav .wrap{display:flex;align-items:center;justify-content:space-between;width:100%}
-  .nav img{height:18px;width:auto}
-  .nav .btn{padding:10px 16px;font-size:14px}
+  .nav img{height:16px;width:auto}
+  .nav a.tel{font-size:14px;font-weight:700;color:var(--white);opacity:.85}
+  .nav a.tel:hover{opacity:1}
 
-  /* ---------- hero ---------- */
-  .hero{padding:64px 0 56px}
-  .hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
-  .kicker{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--w50);margin:0 0 18px;display:flex;align-items:center;gap:10px}
-  .kicker::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--teal)}
-  h1{margin:0 0 18px;font-size:clamp(34px,4.4vw,54px);font-weight:700;line-height:1.15;letter-spacing:-.01em}
-  .hero p{margin:0 0 28px;font-size:17px;color:var(--w70);max-width:44ch}
-  .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
-  .hero .tags{margin:0 0 12px;font-size:17px;font-weight:700;color:var(--white)}
-  .hero .tags i,.hero .awards i{font-style:normal;color:var(--teal);margin:0 8px}
-  .hero .awards{margin:22px 0 0;font-size:14px;color:var(--w70);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-  .hero .awards svg{color:var(--teal);flex:none}
-  .hero .pic{border-radius:16px;overflow:hidden;aspect-ratio:4/5;background:var(--card)}
-  .hero .pic img{width:100%;height:100%;object-fit:cover;object-position:50% 15%}
+  /* hero — centered, Apple */
+  .hero{padding:84px 0 0;text-align:center;overflow:hidden}
+  .hero .copy{max-width:900px;margin:0 auto}
+  .hero .cta-row{margin:28px 0 20px}
+  .awards{display:inline-flex;align-items:center;gap:10px;font-size:15px;color:var(--w70);margin:0 0 54px;flex-wrap:wrap;justify-content:center}
+  .awards svg{color:var(--teal)}
+  .awards i{font-style:normal;color:var(--w50);margin:0 4px}
+  .hero .shot{max-width:1180px;margin:0 auto;padding:0 var(--gutter)}
+  .hero .shot .frame{border-radius:var(--r);overflow:hidden;aspect-ratio:16/9;background:var(--card-d);box-shadow:0 30px 80px -30px rgba(0,0,0,.7)}
+  .hero .shot img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 
-  /* ---------- trust strip ---------- */
-  .trust{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:26px 0}
-  .trust .wrap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-  .trust b{display:block;font-size:26px;font-weight:700;line-height:1.1}
-  .trust span{display:block;font-size:14px;color:var(--w50);margin-top:4px}
+  /* sections */
+  section{padding:clamp(72px,10vw,120px) 0}
+  .light{background:var(--light);color:var(--ink)}
+  .dark2{background:var(--bg-2)}
 
-  /* ---------- sections ---------- */
-  section{padding:72px 0}
-  h2{margin:0 0 8px;font-size:clamp(24px,2.8vw,32px);font-weight:700;line-height:1.2}
-  .sub{margin:0 0 32px;color:var(--w70);font-size:16px;max-width:60ch}
+  /* bento */
+  .bento{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
+  .tile{border-radius:var(--r);padding:34px 32px;position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:260px;transition:transform .35s var(--ease)}
+  .tile:hover{transform:translateY(-4px)}
+  .light .tile{background:var(--card-l)}
+  .dark .tile,.dark2 .tile{background:var(--card-d)}
+  .tile .k{font-size:14px;font-weight:700;color:var(--teal);margin:0 0 8px;letter-spacing:.02em}
+  .tile h3{margin:0 0 8px;font-size:clamp(24px,2.6vw,34px);font-weight:700;letter-spacing:-.02em;line-height:1.12}
+  .tile p{margin:0;font-size:17px;color:var(--ink-2);line-height:1.45}
+  .dark .tile p,.dark2 .tile p{color:var(--w70)}
+  .tile .foot{margin-top:auto;padding-top:22px}
+  .tile .big{font-size:clamp(28px,3.2vw,40px);font-weight:700;letter-spacing:-.02em;line-height:1}
+  .s2{grid-column:span 2}.s3{grid-column:span 3}.s4{grid-column:span 4}.s6{grid-column:span 6}
+  .tile.photo{padding:0;min-height:340px}
+  .tile.photo img{width:100%;height:100%;object-fit:cover}
+  .tile.photo .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 30px;background:linear-gradient(0deg,rgba(0,0,0,.72),rgba(0,0,0,0));color:#fff}
+  .tile.photo .cap h3{color:#fff}
+  .tile.photo .cap p{color:rgba(255,255,255,.8)}
 
-  /* branches */
-  .branches{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-  .branch{
-    background:var(--card-2);border-radius:var(--r);padding:26px 24px;
-    display:flex;flex-direction:column;gap:6px;
-    transition:transform .25s var(--ease),background .25s;
-  }
-  .branch:hover{transform:translateY(-4px);background:#3a3a3a}
-  .branch .n{font-size:12px;font-weight:700;letter-spacing:.14em;color:var(--w50)}
-  .branch h3{margin:2px 0 0;font-size:20px;font-weight:700}
-  .branch .addr{color:var(--w70);font-size:15px;flex:1}
-  .branch .tel{margin-top:16px;font-weight:700;font-size:16px;display:inline-flex;align-items:center;gap:8px}
-  .branch .tel svg{color:var(--teal)}
-  .callbar{
-    margin-top:16px;background:var(--card);border-radius:var(--r);padding:22px 24px;
-    display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;
-  }
-  .callbar .l{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--w50)}
-  .callbar .num{font-size:clamp(24px,3vw,32px);font-weight:700;line-height:1}
-
-  /* doctors */
-  .docs{display:grid;grid-template-columns:repeat(6,1fr);gap:12px}
-  .doc{background:var(--card-2);border-radius:var(--r);overflow:hidden}
+  /* doctors strip */
+  .docs{display:grid;grid-template-columns:repeat(6,1fr);gap:14px}
+  .doc{border-radius:20px;overflow:hidden;background:var(--card-d)}
   .doc .ph{aspect-ratio:4/5;overflow:hidden}
-  .doc img{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
-  .doc:hover img{transform:scale(1.04)}
-  .doc .nm{padding:12px 14px 14px;font-size:15px;font-weight:700}
-  .doc .rl{display:block;font-size:12px;color:var(--w50);font-weight:400;margin-top:2px}
+  .doc img{width:100%;height:100%;object-fit:cover;transition:transform .7s var(--ease)}
+  .doc:hover img{transform:scale(1.05)}
+  .doc .nm{padding:12px 14px 14px;font-size:16px;font-weight:700}
+  .doc .rl{display:block;font-size:12.5px;color:var(--w50);font-weight:400;margin-top:2px}
 
-  /* cta band */
-  .band{background:var(--card-2);border-radius:16px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr}
-  .band .copy{padding:44px 40px;display:flex;flex-direction:column;justify-content:center}
-  .band .copy h2{margin-bottom:10px}
-  .band .copy p{margin:0 0 24px;color:var(--w70);max-width:40ch}
-  .band .pic{min-height:300px}
-  .band .pic img{width:100%;height:100%;object-fit:cover}
+  /* call band */
+  .callband{border-radius:var(--r);background:linear-gradient(135deg,#2db7b9 0%,#1f9698 60%,#176f71 100%);color:#fff;padding:clamp(40px,6vw,72px) var(--gutter);text-align:center}
+  .callband h2{color:#fff}
+  .callband .num{display:inline-block;font-size:clamp(40px,7vw,76px);font-weight:700;letter-spacing:-.03em;line-height:1;margin:6px 0 22px}
+  .callband p{color:rgba(255,255,255,.85);margin:0 0 6px;font-size:18px}
 
-  /* footer */
-  footer{border-top:1px solid var(--line);padding:36px 0 48px}
+  footer{background:var(--bg-2);padding:40px 0 56px;border-top:1px solid rgba(255,255,255,.08)}
   footer .wrap{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
-  footer img{height:16px;width:auto;opacity:.9}
-  footer p{margin:0;font-size:13.5px;color:var(--w50)}
+  footer img{height:15px;width:auto;opacity:.9}
+  footer p{margin:0;font-size:13px;color:var(--w50)}
   footer a{color:var(--w70);border-bottom:1px solid rgba(255,255,255,.25)}
-  footer a:hover{color:var(--white);border-color:var(--white)}
 
-  /* ---------- responsive ---------- */
   @media (max-width:980px){
+    .s2,.s3,.s4{grid-column:span 3}
     .docs{grid-template-columns:repeat(3,1fr)}
-    .branches{grid-template-columns:1fr}
   }
-  @media (max-width:820px){
-    .hero{padding:36px 0 44px}
-    .hero .wrap{grid-template-columns:1fr;gap:28px}
-    .hero .pic{order:-1;aspect-ratio:4/3}
-    .hero .pic img{object-position:50% 20%}
-    .band{grid-template-columns:1fr}
-    .band .pic{order:-1;min-height:220px}
-    .band .copy{padding:30px 24px}
-    section{padding:56px 0}
-  }
-  @media (max-width:560px){
-    .trust .wrap{grid-template-columns:1fr;gap:14px}
+  @media (max-width:640px){
+    .hero{padding-top:56px}
+    .hero .shot .frame{aspect-ratio:4/5}
+    .hero .shot img{object-position:50% 15%}
+    .bento{grid-template-columns:1fr}
+    .s2,.s3,.s4,.s6{grid-column:span 1}
+    .tile{min-height:0;padding:28px 24px}
+    .tile.photo{min-height:280px}
     .docs{grid-template-columns:repeat(2,1fr)}
-    .hero .actions .btn{width:100%;justify-content:center}
+    .cta-row{gap:14px}
+    .cta-row .pill{width:100%}
     footer .wrap{flex-direction:column;align-items:flex-start}
   }
 </style>
@@ -174,79 +159,72 @@
 <nav class="nav">
   <div class="wrap">
     <a href="#top" aria-label="COSDENT"><img src="/assets/logo-white-6f4ba632.png" alt="COSDENT" width="460" height="79"></a>
-    <a class="btn btn-white" href="tel:026669499">โทร 02-666-9499</a>
+    <a class="tel" href="tel:026669499">โทร 02-666-9499</a>
   </div>
 </nav>
 
 <header class="hero" id="top">
   <div class="wrap">
-    <div>
-      <p class="kicker rv">COSDENT Smile Design</p>
+    <div class="copy">
+      <p class="eyebrow rv">COSDENT Smile Design</p>
       <h1 class="rv">ยิ้มสวยอย่างมั่นใจ</h1>
-      <p class="tags rv">Veneer <i>•</i> Digital Smile Preview <i>•</i> ทีมแพทย์เฉพาะทาง</p>
-      <p class="rv">รับพรีวิวรอยยิ้มและดูเคสจริง — คลิกเดียวถึงเว็บไซต์ผลงานของเรา ดูแลโดยทีมทันตแพทย์เฉพาะทางใน 3 สาขาใจกลางกรุงเทพฯ</p>
-      <div class="actions rv">
-        <a class="btn btn-white" href="tel:026669499">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          โทรนัดหมาย
-        </a>
-        <a class="btn btn-ghost" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">
-          ชมผลงานจริง
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg>
-        </a>
+      <p class="lead rv"><b>Veneer</b> • <b>Digital Smile Preview</b> • <b>ทีมแพทย์เฉพาะทาง</b><br>รับพรีวิวรอยยิ้มและดูเคสจริง คลิกเดียวถึงเว็บไซต์ผลงานของเรา</p>
+      <div class="cta-row rv">
+        <a class="pill pill-teal" href="tel:026669499">โทรนัดหมาย</a>
+        <a class="more" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">ชมผลงานจริง</a>
       </div>
-      <p class="awards rv"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>รางวัล Marketeer 3 ปีซ้อน <i>•</i> รางวัลระดับเอเชีย 4 ปีซ้อน</p>
+      <p class="awards rv"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"/><path d="M15.5 13 17 22l-5-3-5 3 1.5-9"/></svg>รางวัล Marketeer 3 ปีซ้อน <i>•</i> รางวัลระดับเอเชีย 4 ปีซ้อน</p>
     </div>
-    <div class="pic rv">
-      <img src="/assets/hero-0faa74f8.webp" alt="รอยยิ้มหลังทำวีเนียร์ที่ COSDENT" width="1200" height="1500" fetchpriority="high">
-    </div>
+  </div>
+  <div class="shot rv">
+    <div class="frame"><img src="/assets/hero-0faa74f8.webp" alt="รอยยิ้มหลังทำวีเนียร์ที่ COSDENT" width="1200" height="1500" fetchpriority="high"></div>
   </div>
 </header>
 
-<div class="trust">
+<section class="light" id="why">
   <div class="wrap">
-    <div class="rv"><b>11 ปี</b><span>ประสบการณ์ตั้งแต่ปี 2014</span></div>
-    <div class="rv"><b>4,000+ เคส</b><span>รอยยิ้มที่ออกแบบโดยทีมทันตแพทย์</span></div>
-    <div class="rv"><b>3 สาขา</b><span>ใจกลางกรุงเทพฯ ติดรถไฟฟ้า</span></div>
-  </div>
-</div>
-
-<section id="branches">
-  <div class="wrap">
-    <h2 class="rv">สาขาของเรา</h2>
-    <p class="sub rv">เลือกสาขาที่สะดวกที่สุด โทรนัดหมายล่วงหน้าเพื่อเลือกเวลาที่คุณต้องการ</p>
-    <div class="branches">
-      <a class="branch rv" href="tel:0645924928">
-        <span class="n">01</span>
-        <h3>พระราม 9</h3>
-        <span class="addr">365/27 พระราม 9 ซอย 41</span>
-        <span class="tel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>064-592-4928</span>
-      </a>
-      <a class="branch rv" href="tel:0938823536">
-        <span class="n">02</span>
-        <h3>สยามสแควร์วัน</h3>
-        <span class="addr">388 ชั้น 3 สยามสแควร์วัน</span>
-        <span class="tel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>093-882-3536</span>
-      </a>
-      <a class="branch rv" href="tel:0986563914">
-        <span class="n">03</span>
-        <h3>เกษรทาวเวอร์</h3>
-        <span class="addr">ชั้น 10 Unit F เกษรทาวเวอร์</span>
-        <span class="tel"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.9.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>098-656-3914</span>
-      </a>
+    <div class="center">
+      <h2 class="rv">ออกแบบรอยยิ้ม<br>ให้เหมาะกับใบหน้าคุณ</h2>
+      <p class="sub rv">ไม่ใช่แค่ฟันขาว แต่คือรอยยิ้มที่เข้ากับโครงหน้า บุคลิก และไลฟ์สไตล์ของคุณ ทุกเคสวางแผนโดยทีมทันตแพทย์เฉพาะทาง</p>
     </div>
-    <div class="callbar rv">
-      <span class="l">Call Centre</span>
-      <a class="num" href="tel:026669499">02-666-9499</a>
-      <a class="btn btn-white" href="tel:026669499">โทรเลย</a>
+    <div class="bento">
+      <div class="tile s3 rv">
+        <p class="k">Digital Smile Preview</p>
+        <h3>เห็นรอยยิ้มใหม่ก่อนเริ่มทำ</h3>
+        <p>พรีวิวผลลัพธ์แบบดิจิทัลบนใบหน้าจริงของคุณ ปรับรูปทรง สัดส่วน และเฉดสี จนพอใจ แล้วค่อยตัดสินใจ</p>
+        <div class="foot"><a class="more" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">ดูตัวอย่างพรีวิว</a></div>
+      </div>
+      <div class="tile s3 rv">
+        <p class="k">Veneer</p>
+        <h3>วีเนียร์ที่ดูเป็นธรรมชาติ</h3>
+        <p>วัสดุพรีเมียม ความหนาเพียงเสี้ยวมิลลิเมตร เฉดสีที่ออกแบบเฉพาะคน ไม่ขาวจนหลอกตา</p>
+        <div class="foot"><a class="more" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">ชมเคสจริง</a></div>
+      </div>
+      <div class="tile s2 rv">
+        <p class="k">ประสบการณ์</p>
+        <div class="big">11 ปี</div>
+        <p>ดูแลคนไข้ตั้งแต่ปี 2014</p>
+      </div>
+      <div class="tile s2 rv">
+        <p class="k">ผลงาน</p>
+        <div class="big">4,000+ เคส</div>
+        <p>รอยยิ้มที่ออกแบบโดยทีมแพทย์</p>
+      </div>
+      <div class="tile s2 rv">
+        <p class="k">รางวัล</p>
+        <div class="big">3 + 4 ปีซ้อน</div>
+        <p>Marketeer 3 ปีซ้อน • ระดับเอเชีย 4 ปีซ้อน</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="doctors" style="padding-top:0">
+<section class="dark" id="doctors">
   <div class="wrap">
-    <h2 class="rv">ทีมทันตแพทย์</h2>
-    <p class="sub rv">ทันตแพทย์เฉพาะทางด้านการออกแบบรอยยิ้มและวีเนียร์ ดูแลทุกเคสด้วยตัวเอง</p>
+    <div class="center">
+      <h2 class="rv">ทีมทันตแพทย์เฉพาะทาง</h2>
+      <p class="sub rv">ทุกเคสดูแลโดยทันตแพทย์ด้านการออกแบบรอยยิ้มและวีเนียร์ด้วยตัวเอง</p>
+    </div>
     <div class="docs">
       <div class="doc rv"><div class="ph"><img src="/assets/dr-dan-1970c52b.webp" alt="หมอแดน" loading="lazy"></div><div class="nm">หมอแดน<span class="rl">ทันตแพทย์ COSDENT</span></div></div>
       <div class="doc rv"><div class="ph"><img src="/assets/dr-jan-c76a7465.webp" alt="หมอแจน" loading="lazy"></div><div class="nm">หมอแจน<span class="rl">ทันตแพทย์ COSDENT</span></div></div>
@@ -258,16 +236,43 @@
   </div>
 </section>
 
-<section style="padding-top:0">
+<section class="light" id="branches">
   <div class="wrap">
-    <div class="band rv">
-      <div class="copy">
-        <h2>ดูผลงานจริงก่อนตัดสินใจ</h2>
-        <p>เคสรีวิววีเนียร์และ Smile Design ทั้งหมด พร้อมรายละเอียดการรักษาและทีมแพทย์ อยู่ที่เว็บไซต์ Smile Design ของเรา</p>
-        <div><a class="btn btn-white" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">ไปที่ cosdentsmiledesign.com
-          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M8 7h9v9"/></svg></a></div>
+    <div class="center">
+      <h2 class="rv">3 สาขา ใจกลางกรุงเทพฯ</h2>
+      <p class="sub rv">ทุกสาขาติดรถไฟฟ้า เลือกที่สะดวกที่สุด แล้วโทรนัดหมายล่วงหน้าได้เลย</p>
+    </div>
+    <div class="bento">
+      <a class="tile s2 rv" href="tel:0645924928">
+        <p class="k">01</p><h3>พระราม 9</h3><p>365/27 พระราม 9 ซอย 41</p>
+        <div class="foot"><span class="more">064-592-4928</span></div>
+      </a>
+      <a class="tile s2 rv" href="tel:0938823536">
+        <p class="k">02</p><h3>สยามสแควร์วัน</h3><p>388 ชั้น 3 สยามสแควร์วัน</p>
+        <div class="foot"><span class="more">093-882-3536</span></div>
+      </a>
+      <a class="tile s2 rv" href="tel:0986563914">
+        <p class="k">03</p><h3>เกษรทาวเวอร์</h3><p>ชั้น 10 Unit F เกษรทาวเวอร์</p>
+        <div class="foot"><span class="more">098-656-3914</span></div>
+      </a>
+      <div class="tile s6 photo rv">
+        <img src="/assets/team-da716c0f.webp" alt="ทีมทันตแพทย์ COSDENT" width="1400" height="788" loading="lazy">
+        <div class="cap"><h3>ดูผลงานจริงก่อนตัดสินใจ</h3><p>เคสรีวิววีเนียร์และ Smile Design ทั้งหมดอยู่ที่ cosdentsmiledesign.com</p></div>
       </div>
-      <div class="pic"><img src="/assets/team-da716c0f.webp" alt="ทีมทันตแพทย์ COSDENT" width="1400" height="788" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section class="dark2" id="call" style="padding-top:0">
+  <div class="wrap" style="padding-top:clamp(72px,10vw,120px)">
+    <div class="callband rv">
+      <h2>นัดหมายวันนี้</h2>
+      <p>Call Centre ทุกสาขา</p>
+      <a class="num" href="tel:026669499">02-666-9499</a>
+      <div class="cta-row">
+        <a class="pill pill-white" href="tel:026669499">โทรเลย</a>
+        <a class="pill pill-dark" href="https://cosdentsmiledesign.com" target="_blank" rel="noopener">ชมผลงานจริง</a>
+      </div>
     </div>
   </div>
 </section>
@@ -283,28 +288,31 @@
 <script>
   (function(){
     var pending = [].slice.call(document.querySelectorAll('.rv'));
-    function show(el){
-      var sib = el.parentNode.children, i = [].indexOf.call(sib, el);
-      el.style.transitionDelay = Math.min(i, 5) * 70 + 'ms';
-      el.classList.add('in');
-    }
-    var ticking = false;
-    function sweep(){
-      ticking = false;
-      if (!pending.length) return;
-      var limit = window.innerHeight * 0.96;
-      pending = pending.filter(function(el){
-        if (el.getBoundingClientRect().top < limit) { show(el); return false; }
-        return true;
-      });
-    }
-    function onScroll(){ if (!ticking) { ticking = true; requestAnimationFrame(sweep); } }
-    window.addEventListener('scroll', onScroll, {passive:true});
-    window.addEventListener('resize', onScroll, {passive:true});
-    window.addEventListener('load', sweep);
+    function show(el){var sib=el.parentNode.children,i=[].indexOf.call(sib,el);el.style.transitionDelay=Math.min(i,5)*70+'ms';el.classList.add('in');}
+    var ticking=false;
+    function sweep(){ticking=false;if(!pending.length)return;var limit=window.innerHeight*0.96;pending=pending.filter(function(el){if(el.getBoundingClientRect().top<limit){show(el);return false;}return true;});}
+    function onScroll(){if(!ticking){ticking=true;requestAnimationFrame(sweep);}}
+    window.addEventListener('scroll',onScroll,{passive:true});
+    window.addEventListener('resize',onScroll,{passive:true});
+    window.addEventListener('load',sweep);
     sweep();
   })();
 </script>
 
+<script>
+  // ตัวตรวจฟอนต์สำหรับไล่ปัญหาจากเครื่องผู้ใช้: เปิด /?fontcheck=1
+  if (/[?&]fontcheck=1/.test(location.search)) {
+    document.fonts.ready.then(function(){
+      var ok=[].slice.call(document.fonts).filter(function(f){return f.status==='loaded'}).map(function(f){return f.family+' '+f.weight});
+      var bad=[].slice.call(document.fonts).filter(function(f){return f.status==='error'}).length;
+      var h1=getComputedStyle(document.querySelector('h1')).fontFamily.split(',')[0];
+      var css=[].slice.call(document.styleSheets).some(function(ss){return (ss.href||'').indexOf('typekit')>-1});
+      var d=document.createElement('div');
+      d.style.cssText='position:fixed;left:12px;bottom:12px;z-index:9999;background:#111;color:#fff;font:13px/1.5 monospace;padding:12px 14px;border-radius:10px;max-width:92vw;box-shadow:0 8px 30px rgba(0,0,0,.5)';
+      d.innerHTML='<b>FONT CHECK</b><br>typekit css: '+(css?'loaded':'<span style=\'color:#f66\'>BLOCKED/ไม่โหลด</span>')+'<br>h1 uses: '+h1+'<br>loaded: '+(ok.join(', ')||'-')+'<br>failed: '+bad+'<br>UA: '+navigator.userAgent.slice(0,80);
+      document.body.appendChild(d);
+    });
+  }
+</script>
 </body>
 </html>
